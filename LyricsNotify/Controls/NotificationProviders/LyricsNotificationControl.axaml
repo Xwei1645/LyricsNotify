@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignHeight="50" d:DesignWidth="800"
+             x:Class="LyricsNotify.Controls.NotificationProviders.LyricsNotificationControl"
+             HorizontalAlignment="Center">
+    <Grid>
+        <ListBox x:Name="MainListBox" Background="Transparent" BorderThickness="0" 
+                 Classes="sliding" IsHitTestVisible="False"
+                 HorizontalAlignment="Center">
+            <ListBox.Styles>
+                <Style Selector="ListBoxItem">
+                    <Setter Property="Padding" Value="0"/>
+                </Style>
+            </ListBox.Styles>
+            <ListBoxItem>
+                <TextBlock x:Name="Text1" 
+                           FontSize="{DynamicResource MainWindowBodyFontSize}"
+                           TextAlignment="Center" VerticalAlignment="Center" 
+                           HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" 
+                           Margin="24 0"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock x:Name="Text2" 
+                           FontSize="{DynamicResource MainWindowBodyFontSize}"
+                           TextAlignment="Center" VerticalAlignment="Center" 
+                           HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" 
+                           Margin="24 0"/>
+            </ListBoxItem>
+        </ListBox>
+    </Grid>
+</UserControl>

@@ -1,0 +1,17 @@
+<ci:ActionSettingsControlBase xmlns="https://github.com/avaloniaui"
+                              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                              xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+                              xmlns:ci="http://classisland.tech/schemas/xaml/core"
+                              xmlns:models="clr-namespace:LyricsNotify.Models;assembly=LyricsNotify"
+                              mc:Ignorable="d" d:DesignHeight="100" d:DesignWidth="400"
+                              x:TypeArguments="models:ShowLyricsActionSettings"
+                              x:DataType="models:ShowLyricsActionSettings"
+                              x:Class="LyricsNotify.Controls.Automation.ShowLyricsActionSettingsControl">
+    <StackPanel Spacing="8">
+        <TextBlock Text="请在提醒设置中配置歌词提醒使用的音频和 LRC 歌词文件。"
+                   Theme="{StaticResource CaptionTextBlockStyle}"
+                   TextWrapping="Wrap"/>
+    </StackPanel>
+</ci:ActionSettingsControlBase>

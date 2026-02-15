@@ -1,0 +1,105 @@
+<ci:NotificationProviderControlBase
+    x:Class="LyricsNotify.Controls.NotificationProviders.LyricsNotificationProviderSettingsControl"
+    x:TypeArguments="models:LyricsNotificationSettings"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ci="http://classisland.tech/schemas/xaml/core"
+    xmlns:local="clr-namespace:LyricsNotify.Controls.NotificationProviders"
+    xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+    xmlns:models="clr-namespace:LyricsNotify.Models;assembly=LyricsNotify"
+    xmlns:helpers="clr-namespace:LyricsNotify.Helpers;assembly=LyricsNotify"
+    mc:Ignorable="d"
+    d:DesignHeight="450" d:DesignWidth="800">
+    <ci:NotificationProviderControlBase.Resources>
+        <helpers:TimeSpanToSecondsConverter x:Key="TimeSpanToSecondsConverter" />
+        <helpers:DurationTextConverter x:Key="DurationTextConverter" />
+    </ci:NotificationProviderControlBase.Resources>
+    
+    <ScrollViewer DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:LyricsNotificationProviderSettingsControl}}"
+                  HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Classes="settings-container animated-intro" Margin="0">
+            <ci:IconText Glyph="&#xE1F6;" Text="素材" Margin="0 0 0 4" />
+            <ui:SettingsExpander Header="歌曲音频"
+                                 Description="{Binding Settings.AudioDuration, Converter={StaticResource DurationTextConverter}, StringFormat='时长: {0}'}"
+                                 IconSource="{ci:FluentIconSource &#xE1F6;}">
+                <ui:SettingsExpander.Footer>
+                    <StackPanel Orientation="Horizontal" Spacing="4">
+                        <TextBox Width="200" Text="{Binding Settings.AudioPath}" IsReadOnly="True" Watermark="未选择音频文件"/>
+                        <Button Content="{ci:FluentIcon &#xE88D;}" Click="SelectAudio_OnClick" />
+                    </StackPanel>
+                </ui:SettingsExpander.Footer>
+            </ui:SettingsExpander>
+
+            <ui:SettingsExpander Header="LRC 歌词文件"
+                                 IconSource="{ci:FluentIconSource &#xE12F;}">
+                <ui:SettingsExpander.Footer>
+                    <StackPanel Orientation="Horizontal" Spacing="4">
+                        <TextBox Width="200" Text="{Binding Settings.LrcPath}" IsReadOnly="True" Watermark="未选择词文件"/>
+                        <Button Content="{ci:FluentIcon &#xE88D;}" Click="SelectLrc_OnClick" />
+                    </StackPanel>
+                </ui:SettingsExpander.Footer>
+            </ui:SettingsExpander>
+
+            <ui:SettingsExpander Header="忽略空行歌词"
+                                 Description="如果歌词中存在空行，则保持显示上一行非空歌词。"
+                                 IconSource="{ci:FluentIconSource &#xE1F0;}">
+                <ui:SettingsExpander.Footer>
+                    <ToggleSwitch IsChecked="{Binding Settings.IsIgnoreEmptyLyrics}" OnContent="" OffContent="" />
+                </ui:SettingsExpander.Footer>
+            </ui:SettingsExpander>
+
+            <ui:SettingsExpander Header="启用切换动画"
+                                 Description="歌词切换时显示过渡动画。"
+                                 IconSource="{ci:FluentIconSource &#xE102;}">
+                <ui:SettingsExpander.Footer>
+                    <ToggleSwitch IsChecked="{Binding Settings.EnableAnimation}" OnContent="" OffContent="" />
+                </ui:SettingsExpander.Footer>
+            </ui:SettingsExpander>
+
+            <ui:SettingsExpander Header="播放音量"
+                                 Description="设置歌词音频的播放音量。"
+                                 IconSource="{ci:FluentIconSource &#xE767;}">
+                <ui:SettingsExpander.Footer>
+                    <Slider Width="200" Minimum="0" Maximum="1" Value="{Binding Settings.Volume}" 
+                            TickFrequency="0.01" IsSnapToTickEnabled="True" />
+                </ui:SettingsExpander.Footer>
+            </ui:SettingsExpander>
+
+            <ci:IconText Glyph="&#xE8C1;" Text="提醒内容" Margin="0 0 0 4" />
+            <ui:SettingsExpander Header="遮罩文本"
+                                 Description="设置提醒显示时的标题文本。"
+                                 IconSource="{ci:FluentIconSource &#xE8C1;}">
+                <ui:SettingsExpander.Footer>
+                    <TextBox Width="200" Text="{Binding Settings.MaskText}" />
+                </ui:SettingsExpander.Footer>
+            </ui:SettingsExpander>
+
+            <ui:SettingsExpander Header="遮罩时长 (秒)"
+                                 Description="显示提醒标题和图标的时间长。总时长将保持为歌曲时长。"
+                                 IconSource="{ci:FluentIconSource &#xF4CE;}">
+                <ui:SettingsExpander.Footer>
+                    <Grid>
+                        <Slider Width="180" Minimum="1" Maximum="10"
+                                VerticalAlignment="Center"
+                                Value="{Binding Settings.MaskDuration, Converter={StaticResource TimeSpanToSecondsConverter}}"
+                                TickFrequency="0.5"
+                                TickPlacement="None"
+                                IsSnapToTickEnabled="True"
+                                ci:SliderDragTooltipAssist.StringFormat="F1"
+                                Classes="auto-tooltip" />
+                    </Grid>
+                </ui:SettingsExpander.Footer>
+            </ui:SettingsExpander>
+
+            <ci:IconText Glyph="&#xF4CE;" Text="测试" Margin="0 0 0 4" />
+            <ui:SettingsExpander Header="测试提醒"
+                                 Description="发送一个测试提醒以验证功能"
+                                 IconSource="{ci:FluentIconSource &#xF4CE;}"
+                                 IsClickEnabled="True"
+                                 ActionIconSource="{ci:FluentIconSource &#xE0AD;}"
+                                 Click="TestNotification_OnClick" />
+        </StackPanel>
+    </ScrollViewer>
+</ci:NotificationProviderControlBase>
