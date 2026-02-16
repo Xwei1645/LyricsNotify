@@ -148,7 +148,7 @@ public class LyricsNotificationProvider : NotificationProviderBase<LyricsNotific
                         });
                     }
 
-                    await Task.Delay(100, cts.Token);
+                    await Task.Delay(Settings.LyricRefreshInterval, cts.Token);
                 }
             }
             else

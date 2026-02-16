@@ -19,6 +19,15 @@ public static class AudioHelper
         };
     }
 
+    /// <summary>
+    /// 检查文件是否为支持的格式
+    /// </summary>
+    public static bool IsSupportedFormat(string filePath)
+    {
+        var extension = Path.GetExtension(filePath).ToLowerInvariant();
+        return extension == ".mp3" || extension == ".wav";
+    }
+
     private static TimeSpan GetWavDuration(Stream stream)
     {
         using var reader = new BinaryReader(stream, Encoding.ASCII, true);

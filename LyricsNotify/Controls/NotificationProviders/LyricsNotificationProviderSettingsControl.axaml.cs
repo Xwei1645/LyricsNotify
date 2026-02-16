@@ -36,8 +36,8 @@ public partial class LyricsNotificationProviderSettingsControl : NotificationPro
 
         var files = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
         {
-            Title = "选择音频文件",
-            FileTypeFilter = new[] { new FilePickerFileType("音频文件") { Patterns = new[] { "*.mp3", "*.wav", "*.m4a" } } },
+            Title = "选择音频文件 (支持 MP3、WAV)",
+            FileTypeFilter = new[] { new FilePickerFileType("音频文件") { Patterns = new[] { "*.mp3", "*.wav" } } },
             AllowMultiple = false
         });
 

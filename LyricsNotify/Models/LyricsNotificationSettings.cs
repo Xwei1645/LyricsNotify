@@ -28,4 +28,7 @@ public partial class LyricsNotificationSettings : ObservableRecipient
 
     [ObservableProperty]
     private double _volume = 1.0;
+
+    [ObservableProperty]
+    private int _lyricRefreshInterval = 100;
 }

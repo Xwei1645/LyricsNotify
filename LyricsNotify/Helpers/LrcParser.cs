@@ -13,12 +13,19 @@ public static class LrcParser
 
     public static List<LrcLine> Parse(string lrcContent)
     {
-        var lines = lrcContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+        // 保留所有行（包括空行），以便处理带时间戳但内容为空的行
+        var lines = lrcContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
         var result = new List<LrcLine>();
         var offset = TimeSpan.Zero;
 
         foreach (var line in lines)
         {
+            // 跳过完全空白的行
+            if (string.IsNullOrWhiteSpace(line))
+            {
+                continue;
+            }
+
             var metadataMatch = MetadataRegex.Match(line);
             if (metadataMatch.Success)
             {

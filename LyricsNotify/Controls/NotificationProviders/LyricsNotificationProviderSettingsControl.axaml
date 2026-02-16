@@ -93,10 +93,29 @@
                 </ui:SettingsExpander.Footer>
             </ui:SettingsExpander>
 
-            <ci:IconText Glyph="&#xF4CE;" Text="测试" Margin="0 0 0 4" />
+            <ci:IconText Glyph="&#xF4CE;" Text="性能设置" Margin="0 0 0 4" />
+            <ui:SettingsExpander Header="歌词刷新频率 (毫秒)"
+                                 Description="设置歌词刷新的时间间隔。较小的值会更及时地刷新歌词，但可能导致卡顿。建议使用 50-200ms 之间的值。"
+                                 IconSource="{ci:FluentIconSource &#xF4CE;}"
+                                 IsClickEnabled="False">
+                <ui:SettingsExpander.Footer>
+                    <Grid>
+                        <Slider Width="180" Minimum="10" Maximum="500"
+                                VerticalAlignment="Center"
+                                Value="{Binding Settings.LyricRefreshInterval}"
+                                TickFrequency="10"
+                                TickPlacement="None"
+                                IsSnapToTickEnabled="True"
+                                ci:SliderDragTooltipAssist.StringFormat="F0"
+                                Classes="auto-tooltip" />
+                    </Grid>
+                </ui:SettingsExpander.Footer>
+            </ui:SettingsExpander>
+
+            <ci:IconText Glyph="&#xE0AD;" Text="测试" Margin="0 0 0 4" />
             <ui:SettingsExpander Header="测试提醒"
                                  Description="发送一个测试提醒以验证功能"
-                                 IconSource="{ci:FluentIconSource &#xF4CE;}"
+                                 IconSource="{ci:FluentIconSource &#xE0AD;}"
                                  IsClickEnabled="True"
                                  ActionIconSource="{ci:FluentIconSource &#xE0AD;}"
                                  Click="TestNotification_OnClick" />
