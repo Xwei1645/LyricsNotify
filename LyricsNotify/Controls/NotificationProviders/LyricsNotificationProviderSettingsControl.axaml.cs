@@ -12,12 +12,14 @@ using LyricsNotify.Services.NotificationProviders;
 using LyricsNotify.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace LyricsNotify.Controls.NotificationProviders;
 
 public partial class LyricsNotificationProviderSettingsControl : NotificationProviderControlBase<LyricsNotificationSettings>
 {
     private LyricsNotificationProvider Provider => IAppHost.GetService<LyricsNotificationProvider>();
+    private ILogger<LyricsNotificationProviderSettingsControl> Logger => IAppHost.GetService<ILogger<LyricsNotificationProviderSettingsControl>>();
 
     public LyricsNotificationProviderSettingsControl()
     {
@@ -26,11 +28,13 @@ public partial class LyricsNotificationProviderSettingsControl : NotificationPro
 
     private void TestNotification_OnClick(object? sender, RoutedEventArgs e)
     {
+        Logger.LogInformation("用户点击了测试提醒按钮。");
         _ = Provider.RunLyricsNotificationAsync();
     }
 
     private async void SelectAudio_OnClick(object? sender, RoutedEventArgs e)
     {
+        Logger.LogInformation("用户点击了选择音频文件按钮。");
         var topLevel = TopLevel.GetTopLevel(this);
         if (topLevel == null) return;
 
@@ -44,20 +48,28 @@ public partial class LyricsNotificationProviderSettingsControl : NotificationPro
         if (files.Count > 0)
         {
             var path = files[0].Path.LocalPath;
+            Logger.LogInformation("音频文件已选择：{AudioPath}", path);
             Settings.AudioPath = path;
             try
             {
                 Settings.AudioDuration = AudioHelper.GetDuration(path);
+                Logger.LogInformation("音频时长获取成功：{Duration}", Settings.AudioDuration);
             }
-            catch
+            catch (Exception ex)
             {
+                Logger.LogWarning(ex, "获取所选音频文件的时长失败，使用默认值 0。");
                 Settings.AudioDuration = TimeSpan.Zero;
             }
+        }
+        else
+        {
+            Logger.LogInformation("用户未选择任何音频文件。");
         }
     }
 
     private async void SelectLrc_OnClick(object? sender, RoutedEventArgs e)
     {
+        Logger.LogInformation("用户点击了选择 LRC 歌词文件按钮。");
         var topLevel = TopLevel.GetTopLevel(this);
         if (topLevel == null) return;
 
@@ -71,6 +83,11 @@ public partial class LyricsNotificationProviderSettingsControl : NotificationPro
         if (files.Count > 0)
         {
             Settings.LrcPath = files[0].Path.LocalPath;
+            Logger.LogInformation("LRC 歌词文件已选择：{LrcPath}", Settings.LrcPath);
+        }
+        else
+        {
+            Logger.LogInformation("用户未选择任何 LRC 歌词文件。");
         }
     }
 }
