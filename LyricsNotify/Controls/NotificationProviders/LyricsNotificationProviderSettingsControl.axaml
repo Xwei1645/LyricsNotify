@@ -20,10 +20,10 @@
     <ScrollViewer DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:LyricsNotificationProviderSettingsControl}}"
                   HorizontalScrollBarVisibility="Disabled">
         <StackPanel Classes="settings-container animated-intro" Margin="0">
-            <ci:IconText Glyph="&#xE1F6;" Text="素材" Margin="0 0 0 4" />
+            <ci:IconText Glyph="&#xEDC3;" Text="素材" Margin="0 0 0 4" />
             <ui:SettingsExpander Header="歌曲音频"
                                  Description="{Binding Settings.AudioDuration, Converter={StaticResource DurationTextConverter}, StringFormat='时长: {0}'}"
-                                 IconSource="{ci:FluentIconSource &#xE1F6;}">
+                                 IconSource="{ci:FluentIconSource &#xEBCA;}">
                 <ui:SettingsExpander.Footer>
                     <StackPanel Orientation="Horizontal" Spacing="4">
                         <TextBox Width="200" Text="{Binding Settings.AudioPath}" IsReadOnly="True" Watermark="未选择音频文件"/>
@@ -33,7 +33,7 @@
             </ui:SettingsExpander>
 
             <ui:SettingsExpander Header="LRC 歌词文件"
-                                 IconSource="{ci:FluentIconSource &#xE12F;}">
+                                 IconSource="{ci:FluentIconSource &#xEE5F;}">
                 <ui:SettingsExpander.Footer>
                     <StackPanel Orientation="Horizontal" Spacing="4">
                         <TextBox Width="200" Text="{Binding Settings.LrcPath}" IsReadOnly="True" Watermark="未选择词文件"/>
@@ -44,7 +44,7 @@
 
             <ui:SettingsExpander Header="忽略空行歌词"
                                  Description="如果歌词中存在空行，则保持显示上一行非空歌词。"
-                                 IconSource="{ci:FluentIconSource &#xE1F0;}">
+                                 IconSource="{ci:FluentIconSource &#xEEE3;}">
                 <ui:SettingsExpander.Footer>
                     <ToggleSwitch IsChecked="{Binding Settings.IsIgnoreEmptyLyrics}" OnContent="" OffContent="" />
                 </ui:SettingsExpander.Footer>
@@ -52,7 +52,7 @@
 
             <ui:SettingsExpander Header="启用切换动画"
                                  Description="歌词切换时显示过渡动画。"
-                                 IconSource="{ci:FluentIconSource &#xE102;}">
+                                 IconSource="{ci:FluentIconSource &#xF06F;}">
                 <ui:SettingsExpander.Footer>
                     <ToggleSwitch IsChecked="{Binding Settings.EnableAnimation}" OnContent="" OffContent="" />
                 </ui:SettingsExpander.Footer>
@@ -60,17 +60,17 @@
 
             <ui:SettingsExpander Header="播放音量"
                                  Description="设置歌词音频的播放音量。"
-                                 IconSource="{ci:FluentIconSource &#xE767;}">
+                                 IconSource="{ci:FluentIconSource &#xF013;}">
                 <ui:SettingsExpander.Footer>
                     <Slider Width="200" Minimum="0" Maximum="1" Value="{Binding Settings.Volume}" 
                             TickFrequency="0.01" IsSnapToTickEnabled="True" />
                 </ui:SettingsExpander.Footer>
             </ui:SettingsExpander>
 
-            <ci:IconText Glyph="&#xE8C1;" Text="提醒内容" Margin="0 0 0 4" />
+            <ci:IconText Glyph="&#xF20C;" Text="提醒内容" Margin="0 0 0 4" />
             <ui:SettingsExpander Header="遮罩文本"
                                  Description="设置提醒显示时的标题文本。"
-                                 IconSource="{ci:FluentIconSource &#xE8C1;}">
+                                 IconSource="{ci:FluentIconSource &#xF279;}">
                 <ui:SettingsExpander.Footer>
                     <TextBox Width="200" Text="{Binding Settings.MaskText}" />
                 </ui:SettingsExpander.Footer>
@@ -78,7 +78,7 @@
 
             <ui:SettingsExpander Header="遮罩时长 (秒)"
                                  Description="显示提醒标题和图标的时间长。总时长将保持为歌曲时长。"
-                                 IconSource="{ci:FluentIconSource &#xF4CE;}">
+                                 IconSource="{ci:FluentIconSource &#xF361;}">
                 <ui:SettingsExpander.Footer>
                     <Grid>
                         <Slider Width="180" Minimum="1" Maximum="10"
@@ -93,10 +93,9 @@
                 </ui:SettingsExpander.Footer>
             </ui:SettingsExpander>
 
-            <ci:IconText Glyph="&#xF4CE;" Text="性能设置" Margin="0 0 0 4" />
             <ui:SettingsExpander Header="歌词刷新频率 (毫秒)"
                                  Description="设置歌词刷新的时间间隔。较小的值会更及时地刷新歌词，但可能导致卡顿。建议使用 50-200ms 之间的值。"
-                                 IconSource="{ci:FluentIconSource &#xF4CE;}"
+                                 IconSource="{ci:FluentIconSource &#xEE35;}"
                                  IsClickEnabled="False">
                 <ui:SettingsExpander.Footer>
                     <Grid>
@@ -115,7 +114,7 @@
             <ci:IconText Glyph="&#xE0AD;" Text="测试" Margin="0 0 0 4" />
             <ui:SettingsExpander Header="测试提醒"
                                  Description="发送一个测试提醒以验证功能"
-                                 IconSource="{ci:FluentIconSource &#xE0AD;}"
+                                 IconSource="{ci:FluentIconSource &#xE02F;}"
                                  IsClickEnabled="True"
                                  ActionIconSource="{ci:FluentIconSource &#xE0AD;}"
                                  Click="TestNotification_OnClick" />
