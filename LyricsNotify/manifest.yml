@@ -11,3 +11,6 @@ url: https://github.com/Xwei1645/LyricsNotify
 version: 0.1.0.0
 apiVersion: 2.0.0.0
 author: Xwei1645
+repoOwner: Programmer-MrWang
+repoName: LyricsNotify
+assetsRoot: master/LyricsNotify
