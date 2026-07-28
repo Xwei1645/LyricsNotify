@@ -1,9 +1,11 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using Avalonia.Controls;
+using Avalonia.Controls.Presenters;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
+using Avalonia.Threading;
 using ClassIsland.Core.Abstractions.Controls;
 using ClassIsland.Core.Models.Notification;
 using ClassIsland.Shared;
@@ -24,6 +26,18 @@ public partial class LyricsNotificationProviderSettingsControl : NotificationPro
     public LyricsNotificationProviderSettingsControl()
     {
         InitializeComponent();
+        Unloaded += OnUnloaded;
+    }
+
+
+    private void OnUnloaded(object? sender, RoutedEventArgs e)
+    {
+        // Detach from parent ContentPresenter to prevent Avalonia
+        // "already has a visual parent" errors when reused across page navigations.
+        if (Parent is ContentPresenter cp && cp.Content == this)
+        {
+            cp.Content = null;
+        }
     }
 
     private void TestNotification_OnClick(object? sender, RoutedEventArgs e)
