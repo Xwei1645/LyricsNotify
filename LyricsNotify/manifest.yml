@@ -8,8 +8,8 @@ name: LyricsNotify
 description: 用于以提醒方式显示歌词的插件。
 entranceAssembly: "LyricsNotify.dll"
 url: https://github.com/Xwei1645/LyricsNotify
-version: 0.1.0.0
-apiVersion: 2.0.0.0
+version: 0.1.1.0
+apiVersion: 2.2.0.0
 author: Xwei1645
 repoOwner: Programmer-MrWang
 repoName: LyricsNotify
