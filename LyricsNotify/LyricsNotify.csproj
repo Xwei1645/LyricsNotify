@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0-windows</TargetFramework>
+        <TargetFramework>net10.0-windows</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <PropertyGroup>
-        <ClassIslandPluginSdkVersion>1.7.106.2-dev-v2</ClassIslandPluginSdkVersion>
+        <ClassIslandPluginSdkVersion>2.1.1.1</ClassIslandPluginSdkVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ClassIsland.PluginSdk" Version="$(ClassIslandPluginSdkVersion)">
+        <PackageReference Include="ClassIsland.PluginSdk" Version="2.1.1.1">
             <ExcludeAssets>runtime; native</ExcludeAssets>
         </PackageReference>
     </ItemGroup>

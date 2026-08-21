@@ -23,7 +23,7 @@ public class LyricsNotificationProvider : NotificationProviderBase<LyricsNotific
     private ILogger<LyricsNotificationProvider> Logger { get; }
     private IAudioService AudioService { get; }
 
-    public LyricsNotificationProvider(ILogger<LyricsNotificationProvider> logger, IAudioService audioService) : base()
+    public LyricsNotificationProvider(ILogger<LyricsNotificationProvider> logger, IAudioService audioService) : base(true)
     {
         Logger = logger;
         AudioService = audioService;
