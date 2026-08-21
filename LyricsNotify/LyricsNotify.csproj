@@ -7,11 +7,11 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <ClassIslandPluginSdkVersion>2.1.1.0</ClassIslandPluginSdkVersion>
+        <ClassIslandPluginSdkVersion>2.1.1.1</ClassIslandPluginSdkVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ClassIsland.PluginSdk" Version="2.1.1.0">
+        <PackageReference Include="ClassIsland.PluginSdk" Version="2.1.1.1">
             <ExcludeAssets>runtime; native</ExcludeAssets>
         </PackageReference>
     </ItemGroup>
